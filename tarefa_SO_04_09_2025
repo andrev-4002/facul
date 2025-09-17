@@ -1,0 +1,42 @@
+Exercícios Teóricos – Processos
+
+Qual a diferença entre programa e processo?
+  Programa é um conjunto de dados e instruções, enquanto um processo é uma instância ativa.
+
+Quais são os estados de um processo e quando ocorrem as transições?
+  Indefinido, pronto, executando, bloqueado e finalizado. Essas transições ocorrem quando um outro processo detem prioridade maior, quando um processo precisa aguardar uma operação, quando um processo volta a ser executado e quando um processo se finaliza.
+
+O que contém um Process Control Block (PCB)?
+  É uma estrutura de dados que reúne as principais informações de processos de um Sistema Operacional, estado da CPU, consumo de memória, indentificador de processos (PID), estado dos processos, entre outros.
+
+O que acontece com os recursos de um processo quando ele termina?
+  São liberads e devolvidos ao sistema operacional.
+
+Qual a diferença entre fork() e exec() no UNIX?
+  O comando fork() cria um processo filho que é uma cópia exata do processo pai, com ambos os processos executando o mesmo código a partir do ponto da chamada fork(). Por outro lado, exec() não cria um novo processo, mas substitui o programa em execução no processo atual por um novo programa a ser executado, sem que o controle retorne ao programa original a menos que ocorra um erro.
+
+Como funciona a hierarquia de processos em UNIX?
+  A hierarquia de processos funciona como uma árvore genealógica, onde cada processo tem um único processo pai e pode gerar múltiplos processos filhos, sendo o processo init o de maior prioridade dessa estrutura, que é criado quando o sistema é iniciado. Processos filhos herdam do pai e o sistema operacional, através de comandos como pstree, ajuda a visualizar essa estrutura de dependências.
+
+
+Cite exemplos de chamadas de sistema usadas em IPC.
+  unções para criar pipes (anónimos e nomeados), para gerir memória compartilhada, para enviar e receber mensagens (filas de mensagens), e para o uso de semáforos e soquetes. Em sistemas Unix-like, funções como pipe(), shm_open() e mq_open() são usadas para criar e aceder a estes recursos.
+
+Por que é importante que o sistema operacional faça gerenciamento de processos?
+  Para garantir que a alocação de recursos, uso de dados e finalização de processos sejam executados, concluídos e organizados.
+
+Explique a diferença entre processos independentes e processos cooperativos.
+  Chamadas de sistema comuns usadas em IPC incluem pipe() e mkfifo() para criação de pipes e FIFOs, msgget(), msgsnd() e msgrcv() para filas de mensagens, shmget(), shmat() e shmdt() para memória compartilhada, semget() e semop() para semáforos, e chamadas de sockets como socket(), bind(), connect() e send() para comunicação em rede ou entre processos locais. Todas elas permitem troca de dados e sincronização entre processos.
+
+O que é um processo zumbi em UNIX/Linux?
+  Um processo zumbi em UNIX/Linux é um processo que já terminou sua execução, mas ainda permanece na tabela de processos porque seu processo pai não chamou wait() ou waitpid() para coletar seu código de saída. Ele não consome CPU ou memória significativa, apenas mantém uma entrada na tabela de processos até que o pai faça essa leitura (ou ele próprio seja encerrado). Se o pai nunca fizer isso, os zumbis permanecem até que o pai seja finalizado.
+
+Explique a diferença entre chamadas bloqueantes e não bloqueantes em IPC.
+  m IPC, uma chamada bloqueante faz o processo esperar até que a operação termine — por exemplo, uma read() em um pipe bloqueia o processo até haver dados para ler. Já uma chamada não bloqueante retorna imediatamente, mesmo que a operação não possa ser concluída no momento — a read() não bloqueante, por exemplo, retorna um erro (EAGAIN/EWOULDBLOCK) se não houver dados disponíveis.
+
+Por que sistemas operacionais multiprogramados precisam de troca de contexto (context switch)?
+  Sistemas operacionais multiprogramados precisam de troca de contexto para permitir que vários processos compartilhem a CPU de forma eficiente. Quando o SO interrompe a execução de um processo para dar lugar a outro, ele precisa salvar o estado atual do processo e carregar o estado do próximo processo a ser executado. Isso garante que, ao voltar para o processo anterior, ele continue exatamente de onde parou, permitindo concorrência, melhor uso do processador e resposta rápida a eventos como interrupções e entradas do usuário.
+
+Cite vantagens e desvantagens da comunicação via memória compartilhada.
+  A comunicação via memória compartilhada é muito usada em IPC porque é rápida e eficiente, já que os processos acessam diretamente a mesma região de memória, sem precisar copiar dados entre eles — isso é a principal vantagem. Além disso, ela permite troca de grandes volumes de dados com baixo overhead.
+  Por outro lado, a desvantagem é que ela exige mecanismos de sincronização (como semáforos ou mutexes) para evitar condições de corrida e inconsistências, além de ser mais complexa de implementar corretamente do que métodos como pipes ou filas de mensagens.
