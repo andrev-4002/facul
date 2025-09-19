@@ -3,16 +3,20 @@ Questões sobre Ferramentas de Monitoramento de Sistema
 Comparação de Finalidade e Acesso: Qual a principal diferença na finalidade e na forma de acesso entre o Monitor de Atividade e o top? Como o Gerenciador de Tarefas se alinha com essa distinção?
   A principal diferença é que o Monitor de Atividade (no macOS) é uma ferramenta gráfica, com foco em apresentar informações de forma visual e amigável, facilitando a análise por usuários comuns, enquanto o top é uma ferramenta de linha de comando, voltada para uso rápido em terminais e para administradores que preferem interação textual. O Gerenciador de Tarefas do Windows se alinha mais ao Monitor de Atividade, pois também é gráfico e prioriza a facilidade de uso, mas oferece algumas funções extras, como finalizar tarefas com cliques e gerenciar programas de inicialização.
 
+
 Monitoramento de CPU: Como você usaria cada uma das três ferramentas para identificar qual processo está consumindo a maior parte da CPU em tempo real? Descreva os passos básicos para cada sistema operacional.
   No macOS, você pode usar o Monitor de Atividade para verificar o consumo de CPU em tempo real de forma simples e visual. Basta abrir o Monitor de Atividade pelo Spotlight, ir até a aba “CPU” e clicar no título da coluna “% CPU” para ordenar os processos pelo uso do processador. O processo que estiver no topo da lista será o que está consumindo mais CPU naquele momento.
   No Linux, o comando top no terminal é a ferramenta mais comum para essa tarefa. Ao digitar top e pressionar Enter, você verá uma lista dinâmica de processos, atualizada em tempo real. Para identificar o processo que mais usa CPU, basta observar a coluna “%CPU” e verificar qual aparece no topo. Se necessário, é possível pressionar a tecla “P” para reordenar a lista, garantindo que o processo com maior consumo fique em primeiro lugar.
   No Windows, o Gerenciador de Tarefas oferece uma interface gráfica intuitiva para esse monitoramento. Ele pode ser aberto rapidamente com o atalho Ctrl + Shift + Esc. Na aba “Processos”, basta clicar no cabeçalho da coluna “CPU” para ordenar os processos pelo uso de processador, permitindo identificar facilmente qual está consumindo mais recursos naquele instante.
 
+
 Análise de Memória: O Monitor de Atividade e o Gerenciador de Tarefas apresentam detalhes sobre o uso de memória (como memória física e swap). Como o top em Linux exibe essa informação e quais métricas de memória são mais relevantes para entender o consumo de um processo?
   No Linux, o top exibe métricas de memória para cada processo, como RES (memória residente, que representa a RAM realmente usada pelo processo), VIRT (memória virtual, incluindo memória alocada mas não necessariamente usada) e SHR (memória compartilhada com outros processos). As métricas mais relevantes para entender o consumo de um processo são RES, que indica a memória física efetivamente ocupada, e VIRT, que ajuda a avaliar o total de memória que o processo pode acessar, incluindo bibliotecas mapeadas e memória virtual. Essas informações permitem analisar tanto o impacto imediato na RAM quanto o potencial de pressão sobre o sistema.
 
+
 Processos e PIDs: Explique a importância do PID (ID do Processo) e como ele é exibido em cada uma das ferramentas. Como você usaria o PID para encerrar um processo que não responde em cada sistema operacional?
   O PID (Process ID) é um identificador único atribuído pelo sistema operacional a cada processo em execução, permitindo que o SO e o usuário gerenciem processos individualmente, como monitorar, alterar prioridades ou encerrá-los.
+
 
 Diferença na Interface: Descreva as principais diferenças na interface do usuário (UI) entre as três ferramentas. Qual delas é mais orientada a comandos de texto e qual é mais visual?
  A que tem maior orientação visual é a do MACOS, que possui gráficos e informações visuais ricas e bem organizadas, já a que possui menor orientação visual é a do Linux, que funciona inteiramente por meio de caracteres. Já a do Windows também é de orientação visual alta, porém mais técnica que o MACOS e não tão "analógica" quando o Linux.
@@ -28,4 +32,3 @@ Hierarquia de Processos: Em que medida o Monitor de Atividade e o Gerenciador de
 
 
 Uso em Servidores vs. Desktops: Qual das três ferramentas é mais adequada para monitoramento em ambientes de servidor (especialmente sem interface gráfica)? Justifique sua resposta, explicando como as características de cada uma se encaixam melhor em cenários de servidor ou de desktop.
-
